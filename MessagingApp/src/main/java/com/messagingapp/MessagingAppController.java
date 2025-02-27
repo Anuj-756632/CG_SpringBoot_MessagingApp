@@ -3,7 +3,7 @@ package com.messagingapp;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api")
+
 public class MessagingAppController {
     //UseCase 1
     @GetMapping("/hello")
@@ -13,7 +13,7 @@ public class MessagingAppController {
 
 
     //Use Case 2
-    @GetMapping("/hello")
+    @GetMapping("/hello world")
     public String sayHello(@RequestParam(name = "name", defaultValue = "Mark") String name) {
         return "Hello, " + name + " from BridgeLabz!";
     }
@@ -27,5 +27,13 @@ public class MessagingAppController {
             name = "Mark";
         }
         return "Hello " + name + " from BridgeLabz!";
+    }
+
+
+
+    // Use Case 4 - POST Request with JSON Body (UserDTO)
+    @PostMapping("/hello")
+    public String sayHelloWithPost(@RequestBody UserDTO user) {
+        return "Hello " + user.getFirstName() + " " + user.getLastName() + " from BridgeLabz";
     }
 }
