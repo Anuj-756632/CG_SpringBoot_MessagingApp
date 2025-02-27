@@ -13,7 +13,8 @@ public class MessagingAppController {
 
 
     //Use Case 2
-    @GetMapping("/helloWorld")
+
+    @GetMapping("/hello world")
     public String sayHello(@RequestParam(name = "name", defaultValue = "Mark") String name) {
         return "Hello, " + name + " from BridgeLabz!";
     }
@@ -42,5 +43,12 @@ public class MessagingAppController {
             @PathVariable String firstName,
             @RequestParam(name = "lastName", defaultValue = "Taylor") String lastName) {
         return "Hello " + firstName + " " + lastName + " from BridgeLabz";
+    }
+
+
+    // Use Case 4 - POST Request with JSON Body (UserDTO)
+    @PostMapping("/hello")
+    public String sayHelloWithPost(@RequestBody UserDTO user) {
+        return "Hello " + user.getFirstName() + " " + user.getLastName() + " from BridgeLabz";
     }
 }
